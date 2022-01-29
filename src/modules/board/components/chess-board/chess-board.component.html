@@ -1,0 +1,15 @@
+<div #board class="board"[class.shaded]="promotionMoves.length"></div>
+<div
+  *ngIf="promotionMoves.length"
+  class="promotion"
+  [class.white]="promotionMoves[0].color === 'w'"
+  [class.black]="promotionMoves[0].color === 'b'">
+  <div
+    *ngFor="let move of promotionMoves"
+    class="promotion__piece"
+    [class.white]="move.color === 'w'"
+    [class.black]="move.color === 'b'"
+    [ngClass]="move.color + (move.promotion | uppercase)"
+    (click)="promotionPiece(move)"
+  ></div>
+</div>

@@ -1,0 +1,28 @@
+@import "variables";
+@import "media";
+
+.info-block {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: var(--gap);
+  color: var(--white-color);
+
+  &__title {
+    font: 400 24px/1.42 var(--aktiv-grotesk-regular);
+    line-height: 0.92;
+    margin-bottom: calc(var(--gap) * 0.5);
+  }
+
+  &__subtitle {
+    font: 400 18px/1.42 var(--aktiv-grotesk-regular);
+    line-height: 1.22;
+    margin-bottom: calc(var(--gap) * 0.5);
+  }
+
+  &__text {
+    font: 400 16px/1.42 var(--aktiv-grotesk-regular);
+    opacity: 0.3;
+    line-height: 1.38;
+  }
+}

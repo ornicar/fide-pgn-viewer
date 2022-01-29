@@ -1,0 +1,15 @@
+<ng-container *ngIf="player$ | async as playerInfo">
+	<div class="player">
+		<div class="player__name">{{ playerInfo.full_name }}</div>
+    <div class="player__info">
+      <div class="player__flag" *ngIf="playerInfo.federation">
+				<img *ngIf="playerInfo.federation.flag_link || playerInfo.federation.flag_pict"
+						 [src]="playerInfo.federation.flag_link || playerInfo.federation.flag_pict"
+						 [title]="playerInfo.federation.name">
+      </div>
+      <div *ngIf="playerInfo.rating" class="player__rank">
+        <span *ngIf="playerInfo.rating">{{ playerInfo.rating }}</span>
+      </div>
+    </div>
+  </div>
+</ng-container>

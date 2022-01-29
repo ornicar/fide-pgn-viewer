@@ -1,0 +1,64 @@
+<div class="navigation" [class.navigation--my-game]="(gameState.isMyGame$ | async)">
+	<div class="navigation__section">
+		<button class="navigation__btn" [disabled]="isDisableStart$ | async" (click)="onStartClick()">
+			<svg-rewind-back class="navigation__icon"></svg-rewind-back>
+		</button>
+	</div>
+
+	<div class="navigation__section">
+		<button class="navigation__btn navigation__btn--back" [disabled]="isDisableBack$ | async"
+						(click)="onBackwardClick()">
+			<svg-play class="navigation__icon"></svg-play>
+		</button>
+	</div>
+
+	<div class="navigation__section">
+		<button class="navigation__btn" [disabled]="isDisableEnd$ | async" (click)="onEndClick()">
+			<svg-rewind class="navigation__icon"></svg-rewind>
+		</button>
+	</div>
+
+	<div class="navigation__section">
+		<button class="navigation__btn  navigation__btn--back"
+						(click)="onFlipClick()">
+			<svg-rotate class="navigation__icon"></svg-rotate>
+		</button>
+	</div>
+
+	<!--	<div class="navigation__section">-->
+	<!--		<button class="navigation__btn  navigation__btn&#45;&#45;back"-->
+	<!--						[disabled]="isDisableBegin$ | async"-->
+	<!--						(click)="eraseDrawing.emit()">-->
+	<!--			<svg-rotate class="navigation__icon"></svg-rotate>-->
+	<!--		</button>-->
+	<!--	</div>-->
+
+	<div class="navigation__section">
+		<button
+				class="navigation__btn"
+				[class.navigation__btn--active]="drawIsEnabled"
+				(click)="toggleDrawArrow()">
+			<svg-buttons-add-arrow class="navigation__icon"></svg-buttons-add-arrow>
+		</button>
+	</div>
+
+	<div class="navigation__section">
+		<button class="navigation__btn" [disabled]="isDisableForward$ | async" (click)="onForwardClick()">
+			<svg-play class="navigation__icon"></svg-play>
+		</button>
+	</div>
+
+	<!-- <div class="navigation__section">
+			<button class="navigation__btn navigation__move">
+				<ng-container *ngIf="selectedMove$ | async as move; else emptyMove">
+						<span>{{move.move_number}}.</span>
+						<piece
+								[san]="move.san"
+								[isWhite]="move.is_white_move"
+						></piece>
+						<span>{{move.san}}</span>
+				</ng-container>
+				<ng-template #emptyMove>...</ng-template>
+			</button>
+		</div> -->
+</div>

@@ -1,0 +1,16 @@
+@import "variables";
+@import "media";
+
+.container {
+  height: 100%;
+  font-family: var(--aktiv-grotesk-regular);
+  background-color: var(--main-bg-color);
+
+  @include phone() {
+    padding: 0;
+  }
+
+  @include phone-landscape {
+    padding: 0;
+  }
+}

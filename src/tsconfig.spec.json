@@ -1,0 +1,26 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/spec",
+    "baseUrl": "./",
+    "target": "es5",
+    "types": [
+      "jasmine",
+      "node"
+    ],
+    "paths": {
+      "@app/*": ["./app/*"],
+      "@env": ["./environments/environment"],
+      "@modules/*": ["./modules/*"]
+    }
+  },
+  "files": [
+    "test.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "modules/**/*.spec.ts",
+    "modules/**/*.d.ts",
+    "typings.d.ts"
+  ]
+}

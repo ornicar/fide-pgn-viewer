@@ -1,0 +1,35 @@
+@import "nouislider/nouislider";
+@import "variables";
+@import "media";
+
+.timeline {
+  &__slider {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    bottom: 0;
+  }
+
+  &__circle {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    transform: translate(50%, -50%);
+    width: 25px;
+    height: 25px;
+    background: var(--white-color);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  &__position {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--black-color);
+    font: 500 12px/1 var(--aktiv-grotesk-regular);
+    letter-spacing: -0.27px;
+  }
+}

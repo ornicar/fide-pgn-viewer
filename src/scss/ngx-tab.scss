@@ -1,0 +1,52 @@
+@import "variables";
+@import "media";
+
+.predictions-tabs {
+  display: block;
+  height: 163px;
+
+  .ngx-tab {
+    &__content {
+      border-top: 1px solid rgba(#fff, 0.1);
+      margin-top: 1px;
+      min-height: 110px;
+      background-color: #1a1a1a;
+
+      @include phone() {
+        min-height: 54px;
+        margin-top: 0;
+        border-top-style: none;
+      }
+    }
+  }
+  .ngx-tabs {
+    &__nav {
+      @include phone() {
+        display: none;
+      }
+    }
+
+    &__btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: var(--gap);
+      height: 52px;
+      background-color: var(--main-bg-color-2);
+      border: 0 !important;
+      color: var(--white-color);
+      font: 400 10px/13 var(--aktiv-grotesk-regular);
+      background-color: transparent;
+      text-transform: uppercase;
+      margin-right: calc(var(--gap) / 2);
+      letter-spacing: 0.2em;
+
+      &:hover,
+      &.active {
+        background-color: transparent;
+        color: var(--white-color) !important;
+        opacity: 0.3;
+      }
+    }
+  }
+}

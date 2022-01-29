@@ -1,0 +1,9 @@
+<div class="info-block" *ngIf="board$ | async as board">
+  <div class="info-block__title">{{ board.tournament.title }}</div>
+  <div class="info-block__subtitle">
+    <span>{{ board.tournament.date_start | date: "MMM d, y" }}</span>
+    <span *ngIf="board.tournament.date_finish"> / {{ board.tournament.date_finish | date: "MMM d, y" }}</span>
+    <span *ngIf="board.tournament.place">, {{ board.tournament.place }}</span>
+  </div>
+  <div class="info-block__text">{{ board.tournament.info }}</div>
+</div>

@@ -1,0 +1,89 @@
+@import "variables";
+@import "media";
+
+.board-tooltip {
+  position: absolute;
+  left: 50%;
+  z-index: z-index(modal);
+  top: -99999px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: var(--gap);
+  background-color: var(--main-bg-color);
+
+  &__time-show {
+    transform: translateY(-30px);
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 240px;
+    height: 240px;
+  }
+
+  &__coordinates {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: var(--white-color);
+    font: 400 8px/1.42 var(--aktiv-grotesk-regular);
+    opacity: 0.3;
+  }
+
+  &__coordinates-numbers,
+  &__coordinates-letters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: var(--gap);
+    left: calc(var(--gap) * -1);
+  }
+
+  &__coordinates-letters {
+    top: auto;
+    bottom: calc(var(--gap) * -1);
+    width: 100%;
+    height: var(--gap);
+    left: 0;
+    right: 0;
+    line-height: 1;
+    flex-direction: row;
+  }
+
+  &.show {
+    top: 50%;
+  }
+}
+
+.chess-board {
+  width: 100%;
+  height: 100%;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  height: 32px;
+
+  &__item {
+    display: flex;
+    font: 400 22px/1 var(--aktiv-grotesk-regular);
+    color: var(--white-color);
+    letter-spacing: -0.49px;
+  }
+
+  &__icon {
+    width: 19px;
+    height: 19px;
+    flex: 0 0 auto;
+    fill: var(--white-color);
+    opacity: 0.41;
+    margin-right: calc(var(--gap) * 0.4);
+  }
+}

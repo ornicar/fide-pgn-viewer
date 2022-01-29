@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+html {
+  min-height: 100%;
+}
+
+html,
+body {
+  height: 1px; // Required to make the child 100% of the min-height
+}
+
+body {
+  font-size: 16px;
+  position: relative;
+  font-weight: 300;
+  min-height: 100%;
+
+  &.is-fixed {
+    overflow: hidden;
+    padding-right: 15px;
+  }
+
+  &.no-scroll {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+main {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  height: 1px;
+}
+
+a {
+  cursor: pointer;
+}
+
+a, a:hover, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+input::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+input:-moz-placeholder {
+  color: #ccc;
+}
+
+input::-ms-clear {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  // max-width: 100%;
+  height: auto;
+}
+

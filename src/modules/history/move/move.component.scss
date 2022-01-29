@@ -1,0 +1,104 @@
+@import "variables";
+@import "media";
+
+.move {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: z-index(base);
+  font-family: var(--aktiv-grotesk-regular);
+  border-right: 1px solid var(--border-color);
+  cursor: pointer;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    opacity: 0;
+    transition: background-color 0.3s;
+    z-index: -1;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &_white {
+    background-color: var(--main-bg-color);
+  }
+}
+
+.move:hover,
+.move_selected {
+  &:after {
+    background-color: var(--move-color);
+    opacity: 1;
+  }
+}
+
+.cell {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 0 0 auto;
+  position: relative;
+  color: var(--white-color);
+  font: 400 22px/22px var(--aktiv-grotesk-regular);
+
+  @include ipad() {
+    font: 400 16px/16px var(--aktiv-grotesk-regular);
+  }
+
+  @include phone-landscape() {
+    font: 400 14px/14px var(--aktiv-grotesk-regular);
+  }
+
+  &__clock {
+    width: calc(var(--gap) * 1.9);
+    height: calc(var(--gap) * 1.9);
+    flex: 0 0 auto;
+    opacity: 0.41;
+    fill: var(--white-color);
+    margin-right: 4px;
+  }
+
+  &_piece {
+    width: calc(var(--gap) * 2);
+    height: calc(var(--gap) * 2);
+    margin: 0 calc(var(--gap) * 0.5) 0 calc(var(--gap) * 0.6);
+    flex: 0 0 auto;
+
+    @include ipad() {
+      width: calc(var(--gap) * 1.5);
+      height: calc(var(--gap) * 1.5);
+      margin: 0 0 0 calc(var(--gap) * 0.6);
+    }
+
+    piece {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &_movement {
+    flex: 1 1 50px;
+    white-space: nowrap;
+  }
+
+  &_left-seconds {
+    padding: 0 var(--gap);
+    flex: 1 1 108px;
+  }
+
+  &_spend-seconds {
+    padding: 0 var(--gap) 0 2px;
+    flex: 1 1 108px;
+  }
+}

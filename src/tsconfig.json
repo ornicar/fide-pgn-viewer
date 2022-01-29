@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+
+  "compilerOptions": {
+    "types": [
+      "node",
+      "resize-observer-browser"
+    ]
+  },
+  "include": ["**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "**/*.d.ts"
+  ]
+}

@@ -1,0 +1,78 @@
+@import "variables";
+@import "media";
+
+:host {
+  display: flex;
+  height: calc(var(--gap) * 5.4);
+  background-color: var(--main-bg-color-2);
+
+  @include phone() {
+    height: calc(var(--gap) * 3.5);
+  }
+
+  @include phone-landscape() {
+    height: 100%;
+  }
+}
+
+.navigation {
+  display: flex;
+  flex: 1 1 auto;
+
+  @include phone-landscape() {
+    flex-direction: column;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    padding: calc(var(--gap) / 2);
+    fill: var(--white-color);
+    width: 100%;
+    cursor: pointer;
+
+    &--back {
+      .navigation__icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:disabled {
+      cursor: default;
+      .navigation__icon {
+        opacity: 0.5;
+      }
+    }
+
+    &--active {
+      fill: var(--red-color-active);
+    }
+  }
+
+  &__icon {
+    width: calc(var(--gap) * 1.9);
+    height: calc(var(--gap) * 1.9);
+  }
+
+  &__section {
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+
+    @include phone-landscape() {
+      border-right: none;
+      border-bottom: 1px solid #000;
+      border-bottom: 1px solid var(--border-color);
+    }
+  }
+
+  &__move {
+    display: flex;
+    align-items: center;
+    color: var(--white-color);
+    font: 400 18px/18px var(--aktiv-grotesk-regular);
+  }
+}

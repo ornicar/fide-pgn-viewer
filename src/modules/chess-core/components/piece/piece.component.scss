@@ -1,0 +1,50 @@
+@import "variables";
+@import "media";
+
+.icon {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+
+  &.wB {
+    background-image: url("#{$icons}/images/chess/chesspieces/white-bishop.svg");
+  }
+  &.bB {
+    background-image: url("#{$icons}/images/chess/chesspieces/black-bishop.svg");
+  }
+  &.wK {
+    background-image: url("#{$icons}/images/chess/chesspieces/white-king.svg");
+  }
+  &.bK {
+    background-image: url("#{$icons}/images/chess/chesspieces/black-king.svg");
+  }
+  &.wN {
+    background-image: url("#{$icons}/images/chess/chesspieces/white-horse.svg");
+  }
+  &.bN {
+    background-image: url("#{$icons}/images/chess/chesspieces/black-horse.svg");
+  }
+  &.wP {
+    background-image: url("#{$icons}/images/chess/chesspieces/white-pawn.svg");
+  }
+  &.bP {
+    background-image: url("#{$icons}/images/chess/chesspieces/black-pawn.svg");
+  }
+  &.wQ {
+    background-image: url("#{$icons}/images/chess/chesspieces/white-queen.svg");
+  }
+  &.bQ {
+    background-image: url("#{$icons}/images/chess/chesspieces/black-queen.svg");
+  }
+  &.wR {
+    background-image: url("#{$icons}/images/chess/chesspieces/white-rook.svg");
+  }
+  &.bR {
+    background-image: url("#{$icons}/images/chess/chesspieces/black-rook.svg");
+  }
+  &.w-- {
+
+  }
+}

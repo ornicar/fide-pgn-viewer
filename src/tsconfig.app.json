@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../dist/static"
+  },
+  "exclude": ["src/test-setup.ts", "**/*.spec.ts",
+    // Temporary exclude old paygate
+    "app/modules/paygate.old"
+  ]
+}

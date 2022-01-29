@@ -1,0 +1,242 @@
+@import "variables";
+@import "media";
+
+:host {
+  width: 100%;
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: 33px minmax(0, 1fr);
+  grid-template-rows: max-content minmax(0, 1fr) 54px max-content;
+  grid-template-areas:
+    "chess-player-black chess-player-black"
+    "chess-score-line chess"
+    "chess-score-line broadcast-navigation"
+    "chess-player-white chess-player-white";
+  grid-row-gap: var(--gap);
+  grid-column-gap: var(--gap);
+
+  &.board-flipped {
+    grid-template-areas:
+      "chess-player-white chess-player-white"
+      "chess-score-line chess"
+      "chess-score-line broadcast-navigation"
+      "chess-player-black chess-player-black";
+
+    .chess-board {
+      &__coordinates-numbers {
+        flex-direction: column-reverse;
+      }
+
+      &__coordinates-letters {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  @include phone() {
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content minmax(0, 1fr) 35px max-content;
+    grid-template-areas:
+      "chess-player-black"
+      "chess"
+      "broadcast-navigation"
+      "chess-player-white";
+    grid-row-gap: calc(var(--gap) / 2);
+    grid-column-gap: calc(var(--gap) / 2);
+    margin: 0;
+
+    &.board-flipped {
+      grid-template-areas:
+        "chess-player-white"
+        "chess"
+        "broadcast-navigation"
+        "chess-player-black";
+    }
+  }
+
+  @include phone-landscape() {
+    grid-template-areas:
+      "chess-player-black chess-player-black chess-player-black"
+      "chess-score-line chess broadcast-navigation"
+      "chess-player-white chess-player-white chess-player-white";
+    grid-template-columns: 25px minmax(0, 1fr) 50px;
+    grid-template-rows: max-content minmax(0, 1fr) max-content;
+    grid-row-gap: calc(var(--gap) / 2);
+    grid-column-gap: calc(var(--gap) / 2);
+  }
+}
+
+.chess-board {
+  grid-area: chess;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: var(--main-bg-color);
+  border-radius: var(--bradius);
+
+  &__board {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &__coordinates-numbers,
+  &__coordinates-letters {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1.5%;
+    left: -1.5%;
+    color: var(--border-color);
+  }
+
+  &__coordinates-letters {
+    top: auto;
+    bottom: -1.5%;
+    width: 100%;
+    height: 1.5%;
+    left: 0;
+    right: 0;
+    line-height: 1;
+    flex-direction: row;
+  }
+
+  &__wrapper {
+    position: absolute;
+    padding: calc(var(--gap) * 1.5);
+    transition: all 0.01s;
+    width: 0;
+    height: 0;
+
+    @include phone-landscape() {
+      padding: calc(var(--gap) / 2);
+    }
+  }
+}
+
+.chess-score-line {
+  grid-area: chess-score-line;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  > * {
+    flex: 1 1 auto;
+  }
+
+  @include phone() {
+    display: none;
+  }
+}
+
+.broadcast-navigation {
+  grid-area: broadcast-navigation;
+}
+
+.chess-player {
+  display: flex;
+  flex-direction: column;
+
+  &--black {
+    grid-area: chess-player-black;
+  }
+
+  &--white {
+    grid-area: chess-player-white;
+  }
+
+  &.active {
+    .player {
+      border-color: var(--move-color);
+    }
+  }
+}
+
+.player {
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 auto;
+  min-height: 100px;
+  border-radius: var(--bradius);
+  background-color: var(--main-bg-color);
+  padding: calc(var(--gap) / 2) calc(var(--gap) * 1.2) calc(var(--gap) * 0.7);
+  border: 1px solid var(--main-bg-color);
+  overflow: hidden;
+
+  @include phone() {
+    padding: calc(var(--gap) * 0.2);
+    border-width: 2px;
+    min-height: auto;
+  }
+
+  @include phone-landscape() {
+    padding: calc(var(--gap) * 0.2);
+    border-width: 2px;
+    min-height: auto;
+  }
+
+  &__col {
+    display: flex;
+
+    @include phone() {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+
+    @include phone-landscape() {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+  }
+
+  &__pieces {
+    display: flex;
+    align-items: flex-end;
+    flex: 1 1 auto;
+  }
+
+  &__pieces,
+  &__timer {
+    margin-top: auto;
+  }
+
+  &__info {
+    margin-right: calc(var(--gap) / 2);
+    min-width: 150px;
+  }
+
+  &__score {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-self: stretch;
+    width: 73px;
+    padding-top: var(--gap);
+    flex: 0 0 auto;
+    color: var(--white-color);
+    font: 500 50px/71px var(--aktiv-grotesk-regular);
+
+    @media (max-width: 320px) and (orientation: portrait) {
+      line-height: 12px !important;
+      align-items: flex-end;
+    }
+
+    @include phone() {
+      font: 500 12px/29px var(--aktiv-grotesk-regular);
+      width: 20px;
+      padding-top: 0;
+    }
+
+    @include phone-landscape() {
+      font: 500 12px/29px var(--aktiv-grotesk-regular);
+      width: 20px;
+      padding-top: 0;
+    }
+  }
+}

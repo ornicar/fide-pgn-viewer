@@ -1,0 +1,18 @@
+<div class="move"
+		 [ngClass]="{move_white:move.is_white_move, move_selected: selected}"
+>
+	<div class="cell cell_piece">
+		<piece [san]="move.san" [isWhite]="move.is_white_move"></piece>
+	</div>
+	<div class="cell cell_movement">
+		{{ move.san | sanWithoutPiece }}
+	</div>
+	<!-- <div class="cell cell_left-seconds">
+		<svg-clock class="cell__clock"></svg-clock>
+		{{ move.seconds_left !== null ? (move.seconds_left * 1000 | duration:'hh:mm:ss':({stopTrim: 'm s'})) : '...' }}
+	</div>
+	<div class="cell cell_spend-seconds">
+		<svg-clock class="cell__clock"></svg-clock>
+		{{ move.seconds_spent !== null ? (move.seconds_spent * 1000 | duration:'hh[h]mm[m]ss[s]') : '...' }}
+	</div> -->
+</div>

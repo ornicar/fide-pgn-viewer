@@ -1,0 +1,39 @@
+:root {
+  --main-bg-color: #000;
+  --main-bg-color-2: #1a1a1a;
+  --bg-color-table: #27282b;
+  --bg-color: #000;
+  --border-color: #4a4a4a;
+  --bg-tab-color: #27292d;
+  --white-color: #ffffff;
+  --red-color: #ff0000;
+  --red-color-active: #ee2020;
+  --backlight-color: #e8b56b;
+  --backlight-color-2: #e8b56b;
+  --move-color: #e8b56b;
+  --gap: 10px;
+  --bradius: 5px;
+  --broadcast-chart-height: 100px;
+  --aktiv-grotesk-regular: "AktivGrotesk-Regular", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  --apoc-revelations-web: "ApocLC-Revelations", Frutiger, "Frutiger Linotype",
+    "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+$z-layers: (
+  base: 100,
+  base-dropdown: 200,
+  sticky: 300,
+  overlay-right: 400,
+  overlay-left: 500,
+  modal: 600,
+);
+
+// // examples:
+// // z-index(modal);
+// // z-index(modal, 1); // for child elements if needed.
+@function z-index($layer, $sub-layer: 0) {
+  @return map_get($z-layers, $layer) + $sub-layer;
+}
+
+$icons: "/assets";

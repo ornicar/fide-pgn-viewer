@@ -1,0 +1,50 @@
+@import "variables";
+@import "media";
+
+.move-timer {
+  display: flex;
+  align-items: flex-end;
+
+  &__move-time {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__left-time,
+  &__move-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: var(--gap);
+    color: var(--white-color);
+    letter-spacing: -0.58px;
+    font: 500 16px/16px var(--aktiv-grotesk-regular);
+    border: 1px solid var(--white-color);
+    border-radius: var(--bradius);
+    min-width: 58px;
+    height: 28px;
+    padding: 0 var(--gap);
+
+    @include phone() {
+      font: 500 8px/8px var(--aktiv-grotesk-regular);
+      margin-right: calc(var(--gap) * 0.8);
+    }
+
+    @include phone-landscape() {
+      font: 500 8px/8px var(--aktiv-grotesk-regular);
+      margin-right: calc(var(--gap) * 0.8);
+    }
+  }
+
+  &__move-time-text {
+    color: var(--white-color);
+    font: 500 16px/16px var(--aktiv-grotesk-regular);
+    letter-spacing: -0.36px;
+    margin-right: var(--gap);
+    white-space: nowrap;
+
+    @include phone() {
+      font: 500 8px/8px var(--aktiv-grotesk-regular);
+    }
+  }
+}

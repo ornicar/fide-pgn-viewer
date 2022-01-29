@@ -1,0 +1,6 @@
+@import "variables";
+@import "media";
+
+:host {
+  font-feature-settings: "tnum" 1;
+}

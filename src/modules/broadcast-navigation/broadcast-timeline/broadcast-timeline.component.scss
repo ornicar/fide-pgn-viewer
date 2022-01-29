@@ -1,0 +1,33 @@
+@import "variables";
+@import "media";
+
+:host {
+  display: block;
+  height: var(--broadcast-chart-height);
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  margin: var(--gap) calc(var(--gap) * 2) var(--gap) var(--gap);
+  height: 90px;
+}
+
+timeline-slider {
+  display: block;
+  height: var(--broadcast-chart-height);
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.navigation {
+  position: relative;
+  max-width: 100%;
+  height: var(--broadcast-chart-height);
+  margin-top: calc(var(--broadcast-chart-height) * -1);
+}

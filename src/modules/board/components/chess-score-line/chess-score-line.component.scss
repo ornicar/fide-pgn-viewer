@@ -1,0 +1,61 @@
+@import "variables";
+@import "media";
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.scale-progress {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1 1 auto;
+  background-color: var(--main-bg-color);
+  font: 500 12px/12px var(--aktiv-grotesk-regular);
+  border: 2px solid var(--border-color);
+
+  &__divisions {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    color: var(--border-color);
+
+    &-elem {
+      cursor: default;
+    }
+  }
+
+  &__band {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: calc(var(--gap) / 2);
+  }
+
+  &__band-scale {
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--white-color);
+    border-radius: 3px;
+  }
+
+  &.scale-progress-flipped {
+    .scale-progress {
+      &__band-scale {
+        bottom: auto;
+        top: 0;
+      }
+    }
+  }
+}

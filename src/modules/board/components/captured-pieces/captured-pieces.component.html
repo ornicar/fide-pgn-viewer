@@ -1,0 +1,13 @@
+<div class="chessmen">
+	<div class="chessmen__wrapper">
+		<div class="chessmen__pieces-wrapper" *ngIf="listCapturedPieces$ | async as groupedPieces">
+			<div class="chessmen__pieces" *ngFor="let group of groupedPieces; trackBy: trackByGroup">
+				<div class="chessmen__piece">
+					<piece [piece]="group[0]" [isWhite]="playerColor === Color.Black"></piece>
+				</div>
+				<div class="chessmen__count" *ngIf="group[1] > 1">{{group[1]}}</div>
+			</div>
+		</div>
+		<div class="chessmen__preponderance">{{playerCapturedScore$ | async}} </div>
+	</div>
+</div>

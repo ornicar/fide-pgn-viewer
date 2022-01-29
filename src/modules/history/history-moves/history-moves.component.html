@@ -1,0 +1,86 @@
+<div class="history">
+  <div class="notification">
+    {{ notification$ | async }}
+  </div>
+  <div
+    class="scroll-element"
+    #scrollArea
+    hideScrollbar
+    [autoFocusElementArea]="selectedMove$ | async"
+  >
+    <div class="scroll-block">
+      <ng-container *ngIf="historyBlocks$ | async as historyBlocks">
+        <div
+          *ngFor="
+            let block of historyBlocks;
+            trackBy: trackByBlock;
+            let number = index
+          "
+          class="moves-line"
+          [class.block-my-moves]="!!block.my_moves"
+        >
+          <ng-container *ngIf="block.moves">
+            <div class="moves-line__number">
+              {{ getMoveNumber(block.moves) }}
+            </div>
+
+            <div class="moves-line__content">
+              <div
+                *ngFor="let move of block.moves; trackBy: trackByMove"
+                class="move-wrapper"
+                [autoFocusElementItem]="move"
+                [autoFocusArea]="scrollArea"
+                (mouseenter)="displayTooltip($event, move)"
+                (mouseleave)="hideTooltip()"
+              >
+                <move
+                  *ngIf="move; else historyMovePlaceholder"
+                  [move]="move"
+                  [selected]="move && move.id === selectedMove?.id"
+                  (click)="onMoveClick(move)"
+                  class="can-click"
+                >
+                </move>
+              </div>
+            </div>
+          </ng-container>
+          <span
+            *ngIf="block.my_moves"
+            (click)="clearMyMoves()"
+            class="moves-line__clear"
+          >
+            <svg-close class="moves-line__clear-icon"></svg-close>
+          </span>
+          <ng-container *ngIf="block.my_moves">
+            <div
+              *ngFor="let group of block.my_moves"
+              class="moves-line__my-game"
+            >
+              <div class="moves-line__number">{{ getMoveNumber(group) }}</div>
+
+              <div class="moves-line__content">
+                <div
+                  *ngFor="let move of group; trackBy: trackByMove"
+                  class="move-wrapper"
+                  [autoFocusElementItem]="move"
+                  [autoFocusArea]="scrollArea"
+                  (mouseenter)="displayTooltip($event, move)"
+                  (mouseleave)="hideTooltip()"
+                  [ngClass]="{ selected: move && move.id === selectedMove?.id }"
+                >
+                  <div class="move__my-game" (click)="onMoveClick(move)">
+                    {{ move.san }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <ng-template #historyMovePlaceholder>
+          <move-placeholder></move-placeholder>
+        </ng-template>
+      </ng-container>
+    </div>
+  </div>
+</div>

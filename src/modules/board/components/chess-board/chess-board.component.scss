@@ -1,0 +1,228 @@
+@import "variables";
+
+chess-board {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cg-board-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+  transition: all 0.01s ease;
+
+  svg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+
+.cg-board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  line-height: 0;
+  background-size: cover;
+}
+
+.cg-board-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+}
+
+.cg-board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  line-height: 0;
+  background-size: cover;
+}
+
+.cg-board piece {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: calc(100% / 8 - 4%);
+  height: calc(100% / 8 - 4%);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 3;
+  will-change: transform;
+  transition: all 0.01s ease;
+}
+
+.cg-board piece.dragging {
+  cursor: move;
+  z-index: 9;
+}
+
+.cg-board square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12.5%;
+  height: 12.5%;
+  z-index: 1;
+}
+
+.cg-board piece.anim {
+  z-index: 8;
+}
+
+.cg-board piece.fading {
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.cg-board square.last-move {
+  will-change: transform;
+  top: 0.5%;
+  left: 0.5%;
+  width: 11.5%;
+  height: 11.5%;
+  background-image: linear-gradient(
+    to bottom,
+    var(--backlight-color),
+    var(--backlight-color-2)
+  );
+}
+
+.cg-board square.selected {
+  background-image: linear-gradient(
+    to bottom,
+    var(--backlight-color),
+    var(--backlight-color-2)
+  );
+  border: solid 3px var(--white-color);
+}
+
+.chess-board__outer {
+  .promotion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: var(--gap);
+    transform: translate(-50%, -50%);
+    border-radius: var(--bradius);
+    background-color: var(--main-bg-color);
+    z-index: z-index(base);
+
+    &__piece {
+      display: block;
+      height: 36px;
+      width: 36px;
+      margin-right: var(--gap);
+      cursor: pointer;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.white {
+        &.wN {
+          background-image: url("/assets/images/chess/chesspieces/white-horse.svg");
+        }
+        &.wB {
+          background-image: url("/assets/images/chess/chesspieces/white-bishop.svg");
+        }
+        &.wR {
+          background-image: url("/assets/images/chess/chesspieces/white-rook.svg");
+        }
+        &.wQ {
+          background-image: url("/assets/images/chess/chesspieces/white-queen.svg");
+        }
+      }
+
+      &.black {
+        &.bN {
+          background-image: url("/assets/images/chess/chesspieces/black-horse.svg");
+        }
+        &.bB {
+          background-image: url("/assets/images/chess/chesspieces/black-bishop.svg");
+        }
+        &.bR {
+          background-image: url("/assets/images/chess/chesspieces/black-rook.svg");
+        }
+        &.bQ {
+          background-image: url("/assets/images/chess/chesspieces/black-queen.svg");
+        }
+      }
+    }
+  }
+}
+
+/*themes*/
+
+.chess-board__board--standart .cg-board-wrap {
+  background-image: url("/assets/images/chess/board/chessboard2.svg");
+  background-size: cover;
+}
+
+.chess-board__board--standart .cg-board piece.pawn.white {
+  background-image: url("/assets/images/chess/chesspieces/white-pawn.svg");
+}
+
+.chess-board__board--standart .cg-board piece.bishop.white {
+  background-image: url("/assets/images/chess/chesspieces/white-bishop.svg");
+}
+
+.chess-board__board--standart .cg-board piece.knight.white {
+  background-image: url("/assets/images/chess/chesspieces/white-horse.svg");
+}
+
+.chess-board__board--standart .cg-board piece.rook.white {
+  background-image: url("/assets/images/chess/chesspieces/white-rook.svg");
+}
+
+.chess-board__board--standart .cg-board piece.queen.white {
+  background-image: url("/assets/images/chess/chesspieces/white-queen.svg");
+}
+
+.chess-board__board--standart .cg-board piece.king.white {
+  background-image: url("/assets/images/chess/chesspieces/white-king.svg");
+}
+
+.chess-board__board--standart .cg-board piece.pawn.black {
+  background-image: url("/assets/images/chess/chesspieces/black-pawn.svg");
+}
+
+.chess-board__board--standart .cg-board piece.bishop.black {
+  background-image: url("/assets/images/chess/chesspieces/black-bishop.svg");
+}
+
+.chess-board__board--standart .cg-board piece.knight.black {
+  background-image: url("/assets/images/chess/chesspieces/black-horse.svg");
+}
+
+.chess-board__board--standart .cg-board piece.rook.black {
+  background-image: url("/assets/images/chess/chesspieces/black-rook.svg");
+}
+
+.chess-board__board--standart .cg-board piece.queen.black {
+  background-image: url("/assets/images/chess/chesspieces/black-queen.svg");
+}
+
+.chess-board__board--standart .cg-board piece.king.black {
+  background-image: url("/assets/images/chess/chesspieces/black-king.svg");
+}

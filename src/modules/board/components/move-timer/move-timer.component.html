@@ -1,0 +1,27 @@
+<div class="move-timer">
+  <ng-container  *ngIf="isShowTimer$ | async; else staticTime">
+    <div class="move-timer__left-time move-timer__left-time--active">
+      <timer [date]="(timers$ | async)?.secondsLeftDate" format="HH:mm:ss" stopTrim="m s"></timer>
+    </div>
+    <div class="move-timer__move-time"
+      [class.chess-player__move-time--white]="isWhitePlayer$ | async">
+      <span class="move-timer__move-time-text">
+        move time
+      </span>
+      <timer [date]="(timers$ | async)?.startTimeDate" format="HH:mm:ss" stopTrim="m s" [stopAfterZero]="false"></timer>
+    </div>
+  </ng-container>
+
+  <ng-template #staticTime>
+    <div class="move-timer__left-time">
+      {{ ((leftSeconds$ | async) * 1000) | duration:'HH:mm:ss':({stopTrim: 'm s'})}}
+    </div>
+  </ng-template>
+
+</div>
+
+
+
+
+
+

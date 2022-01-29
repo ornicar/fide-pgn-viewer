@@ -1,0 +1,20 @@
+
+<svg width="175px" height="175px" viewBox="0 0 175 175" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M167.733392,3700.21127 C146.523869,3700.21127 129.330154,3683.01755 129.330154,3661.80803 C129.330154,3640.59851 146.523869,3623.40479 167.733392,3623.40479 C188.942914,3623.40479 206.136629,3640.59851 206.136629,3661.80803 C206.136629,3683.01755 188.942914,3700.21127 167.733392,3700.21127 Z M161.353909,3646.44674 L161.353909,3676.58369 L183.922288,3661.46304 L161.353909,3646.44674 Z" id="path-1"></path>
+        <filter x="-99.6%" y="-99.6%" width="299.2%" height="299.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="3.5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="22" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.482352941   0 0 0 0 0.984313725   0 0 0 0 0.678431373  0 0 0 0.6 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="02-wc-broadcast-media" transform="translate(-81.000000, -3574.000000)">
+            <g id="Combined-Shape-Copy">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

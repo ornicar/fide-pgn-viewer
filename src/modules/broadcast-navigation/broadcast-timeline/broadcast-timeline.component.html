@@ -1,0 +1,24 @@
+<div class="line"></div>
+
+<ng-container *ngIf="hasMoves$ | async">
+  <ng-container *ngIf="scores$ | async as scores">
+    <score-timeline-chart
+      *ngIf="scores.length"
+      [scores]="scores">
+    </score-timeline-chart>
+  </ng-container>
+
+  <div class="navigation">
+    <ng-container>
+      <ng-container *ngIf="moves$ | async as moves">
+        <timeline-slider
+          *ngIf="moves.length"
+          [moves]="moves"
+          [selectedMove]="selectedTranslationMove$ | async"
+          [isLive]="gameState.isTranslation$ | async"
+          (sliderChanged)="sliderChanged($event)">
+        </timeline-slider>
+      </ng-container>
+    </ng-container>
+  </div>
+</ng-container>

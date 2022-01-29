@@ -1,0 +1,96 @@
+<div class="chess-board" #chessBoard>
+	<div class="chess-board__wrapper" [style.width.px]="boardPxSize" [style.height.px]="boardPxSize">
+		<div class="chess-board__board chess-board__board--standart">
+			<div class="chess-board__coordinates" [style.fontSize.px]="boardPxSize / 55">
+				<ul class="chess-board__coordinates-numbers">
+					<li>8</li>
+					<li>7</li>
+					<li>6</li>
+					<li>5</li>
+					<li>4</li>
+					<li>3</li>
+					<li>2</li>
+					<li>1</li>
+				</ul>
+				<ul class="chess-board__coordinates-letters">
+					<li>a</li>
+					<li>b</li>
+					<li>c</li>
+					<li>d</li>
+					<li>e</li>
+					<li>f</li>
+					<li>g</li>
+					<li>h</li>
+				</ul>
+			</div>
+			<chess-board class="chess-board__outer"
+									 [orientation]="orientation">
+			</chess-board>
+		</div>
+	</div>
+</div>
+
+<div class="chess-player chess-player--black"
+		 *ngIf="gameState.board$ | async"
+		 [class.active]="!(boardState.isWhiteTurn$ | async)">
+	<div class="player">
+		<div class="player__col">
+			<div class="player__info">
+				<player [board]="gameState.board$ | async" [playerColor]="Color.Black"></player>
+			</div>
+			<div class="player__timer">
+				<move-timer [playerColor]="Color.Black"></move-timer>
+			</div>
+		</div>
+		<div class="player__col">
+			<div class="player__pieces">
+				<captured-pieces
+						*ngIf="!hiddenCapturedPieces"
+						[capturedPieces]="capturedPieces$ | async"
+						[playerColor]="Color.Black">
+				</captured-pieces>
+				<div class="player__score">{{blackResult$ | async}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="chess-player chess-player--white"
+		 *ngIf="gameState.board$ | async"
+		 [class.active]="boardState.isWhiteTurn$ | async">
+	<div class="player">
+		<div class="player__col">
+			<div class="player__info">
+				<player [board]="gameState.board$ | async" [playerColor]="Color.White"></player>
+			</div>
+			<div class="player__timer">
+				<move-timer [playerColor]="Color.White"></move-timer>
+			</div>
+		</div>
+		<div class="player__col">
+			<div class="player__pieces">
+				<captured-pieces
+						*ngIf="!hiddenCapturedPieces"
+						[capturedPieces]="capturedPieces$ | async"
+						[playerColor]="Color.White">
+				</captured-pieces>
+				<div class="player__score">{{whiteResult$ | async}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="chess-score-line">
+	<stockfish-score-line
+			[moveScore]="(stockfishScore$ | async)"
+			[myGameIsActive]="gameState.isMyGame$ | async"
+			[bottomPlayerColor]="orientation">
+	</stockfish-score-line>
+</div>
+
+<div class="broadcast-navigation">
+	<broadcast-navigation
+			(flip)="flipBoard()"
+			(drawState)="changeDrawState($event)"
+	></broadcast-navigation>
+</div>

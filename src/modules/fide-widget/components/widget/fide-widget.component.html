@@ -1,0 +1,96 @@
+<div class="app-wrapper" [class.only-board]="onlyBoard$ | async">
+  <div class="app-container">
+    <div class="chess">
+      <div class="chess__video-banner" *ngIf="!(onlyBoard$ | async)">
+        <div class="video-banner" *ngIf="banner$ | async as banner">
+          <div *ngIf="banner.video" [innerHTML]="banner.video"></div>
+          <img *ngIf="!banner.video && banner.image" [src]="banner.image" />
+        </div>
+      </div>
+      <div class="chess__board">
+        <div class="board">
+          <div class="board__center">
+            <board-container
+              [hiddenCapturedPieces]="hideCapturedPieces$ | async"
+            ></board-container>
+          </div>
+        </div>
+        <div class="chess-board__container"></div>
+      </div>
+
+      <div class="chess__tabs">
+        <ngx-tabs class="predictions-tabs">
+          <ngx-tab [active]="true" name="Info">
+            <tournament-info></tournament-info>
+          </ngx-tab>
+          <ngx-tab name="Live">
+            <broadcast-timeline></broadcast-timeline>
+          </ngx-tab>
+        </ngx-tabs>
+      </div>
+
+      <div class="chess__very-large-logo" *ngIf="!(onlyBoard$ | async)">
+        <div class="very-large-logo">
+          <img
+            class="very-large-logo__img"
+            src="/assets/images/fide-white.svg"
+          />
+        </div>
+      </div>
+      <div class="chess__predictions" *ngIf="!(onlyBoard$ | async)">
+        <!-- <svg-gear class="chess__gear"></svg-gear> -->
+        <div class="prediction-head">
+          <div class="prediction-head__title">ANALYSIS</div>
+          <div class="prediction-head__button">
+            <span *ngIf="isOpenPrediction">Hide</span>
+            <span *ngIf="!isOpenPrediction">Show</span>
+            <div
+              class="prediction-head__icon"
+              (click)="openPrediction()"
+              [class.close]="!isOpenPrediction"
+            >
+              <svg-eye></svg-eye>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="isOpenPrediction">
+          <predictions-container [showLeela]="showLeela"></predictions-container>
+          <div class="chess__predictions-buttons">
+            <a href="https://chessify.me" target="_blank">
+              <img
+                class="chess__chessify-logo"
+                src="../../../../assets/images/chessify.svg"
+                alt="chessify"
+              />
+            </a>
+            <div class="chess__buttons">
+              <label class="checkbox" *ngIf="isShowLeela">
+                <input
+                  type="checkbox"
+                  name="showLeela"
+                  class="checkbox__item"
+                  [ngModel]="showLeela"
+                  (ngModelChange)="showLeela = !showLeela"
+                />
+                <div class="checkbox__content">
+                  <div class="checkbox__text">Show Leela</div>
+                  <div class="checkbox__button"></div>
+                </div>
+              </label>
+              <button class="chess__button" (click)="downloadPGN()">
+                DOWNLOAD PGN
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chess__history">
+        <history-moves
+          *ngIf="!(onlyBoard$ | async)"
+          [hiddenTooltip]="hideHistoryTooltip$ | async"
+        ></history-moves>
+      </div>
+    </div>
+  </div>
+  <board-tooltip></board-tooltip>
+</div>

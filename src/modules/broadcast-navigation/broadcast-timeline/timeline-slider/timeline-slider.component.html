@@ -1,0 +1,27 @@
+<div class="timeline">
+  <div class="timeline__slider">
+    <nouislider
+      *ngIf="max"
+      [ngModel]="value"
+      [tooltips]="currentPositionFormatter"
+      [behaviour]="'none'"
+      [min]="0"
+      [max]="max"
+      [step]="1"
+      [animate]="!isLive"
+      (change)="onSliderChange($event)"
+    >
+    </nouislider>
+    <ng-container *ngIf="max">
+      <div class="timeline__circle">
+        <div
+          #livePosition
+          class="timeline__position"
+          [style.opacity]="isShowLiveNumberTooltip ? 1 : 0"
+        >
+          {{ currentPositionFormatter.to(max) }}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+@import "variables";
+@import "media";
+
+.player {
+  align-items: end;
+  display: flex;
+  position: relative;
+  height: 100%;
+  padding-top: 35px;
+
+  @include phone() {
+    height: 30px;
+    padding-top: calc(var(--gap) * 2);
+  }
+
+  @include phone-landscape() {
+    height: 30px;
+    padding-top: calc(var(--gap) * 2);
+  }
+
+  &__name {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    font: 400 24px/1 var(--apoc-revelations-web);
+    color: var(--white-color);
+    padding-bottom: calc(var(--gap) / 2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include phone() {
+      font: 400 14px/1 var(--aktiv-grotesk-regular);
+      max-width: calc(100vw - 150px);
+    }
+
+    @include phone-landscape() {
+      font: 400 14px/1 var(--aktiv-grotesk-regular);
+      max-width: calc(100vw - 150px);
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    @include phone() {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__flag {
+    width: 23px;
+    height: 15px;
+    overflow: hidden;
+    background-color: var(--blackk-color);
+    margin-bottom: calc(var(--gap) / 2);
+
+    @include phone() {
+      width: 12px;
+      height: 9px;
+      margin-right: calc(var(--gap) / 2);
+      margin-bottom: 0;
+    }
+
+    player-flag {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__greatness {
+    font: 400 16px/1 var(--aktiv-grotesk-regular);
+    letter-spacing: -0.36px;
+    color: var(--white-color);
+    margin-right: calc(var(--gap) / 2);
+    text-transform: uppercase;
+
+    @include phone() {
+      font: 400 8px/8px var(--aktiv-grotesk-regular);
+      margin-right: calc(var(--gap) / 5);
+    }
+  }
+
+  &__rank {
+    display: flex;
+    align-items: center;
+    font: 500 10px/1 var(--aktiv-grotesk-regular);
+    border-radius: var(--bradius);
+    color: var(--white-color);
+    height: 21px;
+
+    @include phone() {
+      font: 500 8px/8px var(--aktiv-grotesk-regular);
+      width: 23px;
+      height: 10px;
+      border-radius: 3px;
+    }
+
+    @include phone-landscape() {
+      font: 500 8px/8px var(--aktiv-grotesk-regular);
+      width: 23px;
+      height: 10px;
+      border-radius: 3px;
+    }
+  }
+}

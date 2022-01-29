@@ -1,0 +1,60 @@
+<div class="prediction__row">
+  <div class="prediction__info">
+    <div class="info">
+      <div class="info__title">{{ engine === 3 ? 'Leela' : 'Stockfish' }}</div>
+      <div class="info__count">
+        <div *ngIf="depth" class="info__ad">AD: <span> {{ depth }}</span></div>
+        <div *ngIf="nps" class="info__mnsp">MNPS: <span>{{ (nps / 1000000) | number : '1.2-3' }}</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="prediction__text">
+    <div class="prediction__number">
+      {{ score > 0 ? "+" : "" }}{{ score | number: "1.2" }}
+    </div>
+  </div>
+
+  <div class="prediction__btn"></div>
+  <ul class="prediction__list">
+    <li
+      class="prediction__elem"
+      [ngClass]="{ 'half-move': first && !move[0].is_white_move }"
+      *ngFor="
+        let move of predictions | groupBy: 'move_number' | toIterable;
+        trackBy: trackBySan;
+        let first = first
+      "
+    >
+      <div
+        *ngIf="move[0].is_white_move || (first && !move[0].is_white_move)"
+        class="prediction__number"
+      >
+        {{ move[0].move_number }}
+      </div>
+      <div *ngIf="first && !move[0].is_white_move" class="move-block">
+        <div>...</div>
+      </div>
+      <div
+        class="prediction__move-block prediction__move-block--selectable"
+        *ngIf="move[0]"
+        (click)="moveClick(move[0])"
+        (mouseenter)="showTooltip($event, move[0])"
+        (mouseleave)="hideTooltip()"
+        [ngClass]="{ selected: move[0] === selectedPrediction }"
+      >
+        <div class="prediction__move">{{ move[0].san }}</div>
+      </div>
+      <div
+        class="prediction__move-block prediction__move-block--selectable"
+        *ngIf="move[1]"
+        (click)="moveClick(move[1])"
+        (mouseenter)="showTooltip($event, move[1])"
+        (mouseleave)="hideTooltip()"
+        [ngClass]="{ selected: move[1] === selectedPrediction }"
+      >
+        <div class="prediction__move">{{ move[1].san }}</div>
+      </div>
+    </li>
+  </ul>
+  <div class="prediction__btn"></div>
+</div>

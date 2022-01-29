@@ -1,0 +1,50 @@
+<div
+  class="board-tooltip"
+  [class.show]="isShow || isFocus"
+  [class.board-tooltip__time-show]="leftTime"
+  (mouseenter)="onHover()"
+  (mouseleave)="onBlur()"
+  [style.top]="top + 'px'"
+  [style.left]="left + 'px'"
+>
+  <div class="board-tooltip__time" *ngIf="displayHeader">
+    <div class="time">
+      <div class="time__item" *ngIf="leftTime !== null">
+        <svg-timer class="time__icon"></svg-timer>
+        <div class="time__timer">{{leftTime}}</div>
+      </div>
+      <div class="time__item" *ngIf="stockfishScore !== null">
+        &nbsp;&#448;&nbsp;
+        <div class="time__timer">{{stockfishScore | number : '1.2'}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="board-tooltip__wrapper">
+    <div class="board-tooltip__coordinates">
+      <ul class="board-tooltip__coordinates-numbers">
+        <li>8</li>
+        <li>7</li>
+        <li>6</li>
+        <li>5</li>
+        <li>4</li>
+        <li>3</li>
+        <li>2</li>
+        <li>1</li>
+      </ul>
+      <ul class="board-tooltip__coordinates-letters">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+        <li>e</li>
+        <li>f</li>
+        <li>g</li>
+        <li>h</li>
+      </ul>
+    </div>
+
+    <div class="chess-board chess-board__board--standart">
+      <div #board></div>
+    </div>
+  </div>
+</div>

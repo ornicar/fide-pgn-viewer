@@ -1,0 +1,14 @@
+<div class="prediction" [attr.data-prediction-count]="linesCount$ | async">
+  <predictions-line
+      *ngFor="let prediction of (predictions$ | async);  let i = index"
+      [score]="prediction.score"
+      [predictions]="prediction.positions"
+      [depth]="prediction.depth"
+      [nps]="prediction.nps"
+      [engine]="prediction.engine"
+      [class]="'prediction-' + i"
+      [selectedPrediction]="selectedMove"
+      [fromPosition]="boardPosition$ | async"
+      (predictionChange)="onPredictionChange($event, prediction)">
+  </predictions-line>
+</div>

@@ -1,0 +1,180 @@
+@import "variables";
+@import "media";
+
+:host {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.history {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
+  position: relative;
+}
+
+.move-wrapper {
+  width: 50%;
+  flex: 0 0 auto;
+}
+
+.scroll-element {
+  flex: 1 1 1px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scroll-block {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  width: 100%;
+  position: relative;
+  background-color: var(--main-bg-color-2);
+  border: 1px solid var(--main-bg-color-2);
+}
+
+.moves-line {
+  display: flex;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+  height: 43px;
+  border-top: 1px solid var(--main-bg-color-2);
+
+  @include phone-landscape() {
+    height: 30px;
+  }
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &__number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    flex: 0 0 auto;
+    color: var(--white-color);
+    width: 40px;
+    height: 100%;
+    border-right: 1px solid var(--main-bg-color-2);
+
+    background-color: var(--main-bg-color);
+    font: 500 10px/14px var(--aktiv-grotesk-regular);
+
+    @include ipad() {
+      font: 400 10px/14px var(--aktiv-grotesk-regular);
+      width: 21px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    position: relative;
+    background-color: var(--main-bg-color);
+
+    > move,
+    > move-placeholder {
+      flex: 1 1 auto;
+      width: 50%;
+    }
+
+    .move-wrapper:last-child {
+      background-color: var(--border-color);
+    }
+  }
+
+  &__clear {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: calc(var(--gap) / 2);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  &__clear-icon {
+    width: 10px;
+    height: 10px;
+    fill: var(--white-color);
+  }
+}
+
+.block-my-moves {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  padding: calc(var(--gap) / 2) calc(var(--gap) / 1.3);
+  background-color: var(--main-bg-color);
+  .moves-line__number,
+  .moves-line__my-game,
+  .moves-line__content,
+  .move__my-game,
+  .move-wrapper {
+    display: inline-block;
+    width: auto;
+    border: 0;
+    border-bottom: 0 !important;
+  }
+
+  .move-wrapper {
+    background-color: transparent !important;
+  }
+
+  .move-wrapper.selected,
+  .move-wrapper:hover {
+    .move__my-game {
+      color: var(--backlight-color);
+    }
+  }
+
+  .moves-line__number {
+    border-right: none;
+    background-color: transparent;
+
+    &:after {
+      content: ".";
+    }
+  }
+
+  .moves-line__number,
+  .move__my-game {
+    font-size: 18px;
+    color: var(--white-color);
+    padding-right: calc(var(--gap) / 2);
+
+    @include phone-landscape() {
+      font-size: 14px;
+    }
+  }
+  .move__my-game {
+    cursor: pointer;
+  }
+}
+
+.notification {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: var(--main-bg-color-2);
+  padding: calc(var(--gap) * 2) calc(var(--gap) * 1.5);
+  color: var(--move-color);
+  font: 400 10px/12px var(--aktiv-grotesk-regular);
+  letter-spacing: 0.2em;
+  width: 100%;
+  height: 52px;
+
+  @include ipad() {
+    padding: var(--gap);
+    height: auto;
+    font: 400 9px/1 var(--aktiv-grotesk-regular);
+  }
+}

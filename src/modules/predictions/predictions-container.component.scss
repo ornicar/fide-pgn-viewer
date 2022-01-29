@@ -1,0 +1,51 @@
+@import "media";
+@import "variables";
+
+.prediction {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  border-top: 1px solid var(--border-color);
+  min-height: calc(28px * 3);
+  @include phone() {
+    min-height: calc(18px * 3);
+  }
+  &[data-prediction-count="3"] {
+    min-height: calc(28px * 3);
+    @include phone() {
+      min-height: calc(18px * 3);
+    }
+  }
+  &[data-prediction-count="6"] {
+    min-height: calc(28px * 6);
+    @include phone() {
+      min-height: calc(18px * 6);
+    }
+  }
+  &[data-prediction-count="9"] {
+    min-height: calc(28px * 9);
+    @include phone() {
+      min-height: calc(18px * 9);
+    }
+  }
+  @include phone() {
+    border-bottom: none;
+  }
+}
+
+stockfish-line {
+  border-top: 1px solid var(--border-color);
+
+  @include phone() {
+    border-top-style: none;
+  }
+
+  &:first-child {
+    border-top-style: none;
+  }
+
+  &.prediction-0 {
+    display: block;
+  }
+}
